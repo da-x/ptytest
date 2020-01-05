@@ -1,0 +1,36 @@
+[package]
+name = "ptytest"
+version = "0.1.0"
+authors = ["Dan Aloni <alonid@gmail.com>"]
+edition = "2018"
+license = "MIT/Apache-2.0"
+description = "Easy testing of terminal programs by terminal screen compare"
+homepage = "https://github.com/da-x/ptytest"
+repository = "https://github.com/da-x/ptytest"
+keywords = ["pty", "test"]
+categories = ["terminal", "testing"]
+readme = "crates-io.md"
+include = ["Cargo.toml", "src/**/*.rs", "crates-io.md", "README.md", "LICENSE-APACHE", "LICENSE-MIT"]
+
+[[example]]
+name = "ptytest-tester"
+path = "examples/tester.rs"
+
+[[example]]
+name = "ptytest-check_me"
+path = "examples/check_me.rs"
+
+[dependencies]
+libc = "0.2"
+mio = "0.6"
+log = "0.4"
+terminfo = "0.6.1"
+vt100 = "0.8"
+difference = "2.0.0"
+
+[target.'cfg(unix)'.dependencies]
+nix = "0.14.1"
+signal-hook = { version = "0.1", features = ["mio-support"] }
+
+[dev-dependencies]
+rustyline = "5.0.5"
